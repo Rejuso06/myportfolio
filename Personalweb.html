@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Personal Travel Page</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --light-bg: #f4f4f4;
+            --text-color: #333;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+           
+            height: 90vh;
+           background-image:url('P01_5759.jpg');
+           background-size: 100% auto;
+           background-position: center;
+           background-repeat: no-repeat;
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title span {
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0 auto;
+        }
+
+        /* --- DESTINATIONS GRID --- */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-content .date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit:contain;
+            transition: transform 0.5s ease;
+           
+          
+           background-size: 100% auto;
+           background-position: center;
+           background-repeat: no-repeat;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 10px 10px 0px var(--accent-color);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* --- CONTACT / FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-icons {
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 8vh;
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in;
+            }
+
+            .nav-links.nav-active {
+                transform: translateX(0%);
+            }
+
+            .nav-links li {
+                margin: 2rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">KUYA RR TRAVELS</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <div class="menu-toggle">☰</div>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1>Explore the Unseen</h1>
+        <p>Capturing moments from around the globe, one city at a time.</p>
+        <a href="#destinations" class="btn">View Logs</a>
+    </header>
+
+    <section id="destinations">
+        <div class="section-title">
+            <h2>Recent Journeys</h2>
+            <span></span>
+        </div>
+        <div class="destinations-grid">
+            <div class="card">
+                <img src="p110911886.JPG" alt="Bali" class="card-img">
+                <div class="card-content">
+                    <h3>Cozumel, Mexico</h3>
+                    <span class="date">January 2026</span>
+                    <p>Temples, beaches, and vibrant culture. A week spent exploring the heart of Southeast Asia.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="P01_5761.JPG" alt="Alps" class="card-img">
+                <div class="card-content">
+                    <h3>Half Moon Cay</h3>
+                    <span class="date">February 2026</span>
+                    <p>Hiking through the snow-capped peaks and enjoying the serene silence of the mountains.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="DSC03928.JPG" alt="Venice" class="card-img">
+                <div class="card-content">
+                    <h3>Venice, Italy</h3>
+                    <span class="date">March 2026</span>
+                    <p>Getting lost in the canals and enjoying authentic Italian gelato.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background-color: var(--light-bg);">
+        <div class="section-title">
+            <h2>Photo Gallery</h2>
+            <span></span>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="P01_5758.JPG" alt="Beach"></div>
+            <div class="gallery-item"><img src="P139432817.JPG" alt="City"></div>
+            <div class="gallery-item"><img src="P102327870.JPG" alt="Travel"></div>
+            <div class="gallery-item"><img src="P14_6229.JPG" alt="Lake"></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-img">
+                <img src="C34A6815.jpeg" alt="Traveler">
+            </div>
+            <div class="about-text">
+                <h2>Who Am I?</h2>
+                <p>Hi, I'm Alex. I am a photographer and explorer with a passion for documenting the world's most beautiful corners. Whether it's a bustling city street or a quiet mountain peak, I'm always chasing the next horizon.</p>
+                <br>
+                <p>Join me as I share tips, guides, and stories from my adventures.</p>
+                <br>
+                <a href="mailto:email@example.com" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+        </div>
+        <p>&copy; 2026 Rolly Rejuso Jr. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+        });
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu on click
+                if(navLinks.classList.contains('nav-active')){
+                    navLinks.classList.remove('nav-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
